@@ -5,8 +5,6 @@ markdown
 A streaming username availability checker for Hytale using Node.js.  
 It reads nicknames from `generated_nicks.txt` and saves available ones to `available.txt`.
 
----
-
 ## Features
 
 - Stream-based checking of usernames from a text file
@@ -15,7 +13,39 @@ It reads nicknames from `generated_nicks.txt` and saves available ones to `avail
 - Clean terminal logging
 - Supports `.env` file for Hytale cookies
 
----
+## Algorithm
+
+The nickname generation algorithm works as follows:
+
+1. **Alphabet-based combinations:**
+
+   - Nicknames are generated using letters from a defined alphabet (`a`–`z`).
+
+2. **Length range:**
+
+   - Generates nicknames with lengths between `min` and `max` (configurable, typically 3–4 characters).
+
+3. **Letter substitutions:**
+
+   - Each letter can be replaced with a number according to a `letters_replace` mapping, e.g.:
+     - `a → 4`
+     - `b → 8`
+     - `e → 3`
+     - `i → 1`
+     - `l → 1`
+     - `o → 0`
+     - `s → 5`
+     - `t → 7`
+     - `z → 2`
+
+4. **Combinatorial generation:**
+
+   - All possible combinations of letters and substitutions are generated recursively (or via a generator) to create a complete nickname dictionary.
+   - This allows for variants like: `aaa`, `aa4`, `aab`, `a8b`, etc.
+
+5. **Streaming processing:**
+   - Nicknames are not all stored in memory.
+   - They are read/generated line by line and immediately processed for availability, which allows handling huge nickname lists efficiently.
 
 ## Requirements
 
@@ -48,8 +78,6 @@ npm install
 
 3. Create a `.env` file in the root directory with your Hytale cookie.
 
----
-
 ## Usage
 
 Run the checker using:
@@ -64,8 +92,6 @@ The checker will:
 2. Wait 3 seconds between each request
 3. Save available usernames to `available.txt`
 4. Log progress in the terminal
-
----
 
 ## Notes
 
