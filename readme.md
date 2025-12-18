@@ -1,5 +1,3 @@
-markdown
-
 # Hytale Username Checker
 
 A streaming username availability checker for Hytale using Node.js.  
