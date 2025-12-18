@@ -8,7 +8,7 @@ const PORT = 3000;
 // Poprawiona ścieżka względem pliku server.ts
 const FILE_PATH = path.join(__dirname, "../available.txt");
 
-app.get("/nicki", async (req, res) => {
+app.get("/list", async (req, res) => {
   try {
     const data = await readFile(FILE_PATH, "utf-8");
     const lines = data.split("\n").filter(Boolean);
