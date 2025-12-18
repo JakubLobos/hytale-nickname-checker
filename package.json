@@ -5,6 +5,7 @@
   "scripts": {
     "scan": "ts-node src/index.ts",
     "server": "ts-node src/server.ts",
+    "generate": "ts-node src/directoryGenerator.ts",
     "build": "tsc",
     "start": "node dist/index.js"
   },

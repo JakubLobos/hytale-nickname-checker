@@ -64,8 +64,8 @@ HYTALE_COOKIE=your_cookie_here
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-repo/hytale-checker.git
-cd hytale-checker
+git clone https://github.com/JakubLobos/hytale-nickname-checker.git
+cd hytale-nickname-checker
 ```
 
 2. Install dependencies:
@@ -78,10 +78,53 @@ npm install
 
 ## Usage
 
-Run the checker using:
+There are three main scripts:
+
+- **Checker:**
+
+  ```bash
+  npm run check
+  ```
+
+  Reads usernames line by line from `generated_nicks.txt`, waits 3 seconds between each request, saves available usernames to `available.txt`, and logs progress in the terminal.
+
+- **Server:**
+
+  ```bash
+  npm run server
+  ```
+
+  Runs a backend Express server that exposes `/nicki` endpoint returning the content of `available.txt` as JSON.
+
+- **Generate dictionary:**
+
+  ```bash
+  npm run generate
+  ```
+
+  Generates a nickname dictionary according to the rules in `./src/directoryGenerator.ts` and saves it to `generated_nicks.txt`.
+
+## Try the backend
+
+Once the backend is running on the VPS, you can check available nicknames at:
+
+```
+http://83.168.89.120:3000/list
+```
+
+Example usage in the terminal:
 
 ```bash
-npm run dev
+curl http://83.168.89.120:3000/list
+```
+
+You will get a JSON response with the list of available nicknames, e.g.:
+
+```json
+{
+  "count": 3,
+  "available": ["OMG", "Pizza", "Bread"]
+}
 ```
 
 The checker will:
