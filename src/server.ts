@@ -5,7 +5,6 @@ import path from "path";
 const app = express();
 const PORT = 3000;
 
-// Poprawiona ścieżka względem pliku server.ts
 const FILE_PATH = path.join(__dirname, "../available.txt");
 
 app.get("/list", async (req, res) => {
