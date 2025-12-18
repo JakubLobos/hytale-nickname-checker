@@ -94,7 +94,7 @@ There are three main scripts:
   npm run server
   ```
 
-  Runs a backend Express server that exposes `/nicki` endpoint returning the content of `available.txt` as JSON.
+  Runs a backend Express server that exposes `/list` endpoint returning the content of `available.txt` as JSON.
 
 - **Generate dictionary:**
 
