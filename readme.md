@@ -106,7 +106,7 @@ There are three main scripts:
 
 ## Try the backend
 
-Once the backend is running on the VPS, you can check available nicknames at:
+Check available Hytale nicknames by visiting:
 
 ```
 http://83.168.89.120:3000/list
